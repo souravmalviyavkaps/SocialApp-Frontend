@@ -40,3 +40,19 @@ export const registerUserApi = async (body: any) => {
     }
   }
 }
+
+export const loginUserApi = async (body: object) => {
+  try {
+    const res = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
+      body
+    )
+    console.log(res)
+  } catch (error: any) {
+    console.log('Error while login user', error)
+    return {
+      success: false,
+      message: error.message,
+    }
+  }
+}
