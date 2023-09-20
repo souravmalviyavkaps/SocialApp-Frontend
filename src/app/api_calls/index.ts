@@ -40,3 +40,11 @@ export const registerUserApi = async (body: any) => {
     }
   }
 }
+
+export const loginUserApi = async (body: object) => {
+  const res = await axios.post(
+    `${process.env.NEXT_PUBLIC_API_URI}/auth/login`,
+    body
+  )
+  console.log(res)
+}
