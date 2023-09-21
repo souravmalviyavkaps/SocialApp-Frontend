@@ -42,22 +42,34 @@ export const registerUserApi = async (body: any) => {
 }
 
 export const loginUserApi = async (body: object) => {
-  const res = await axios.post(
-    `${process.env.NEXT_PUBLIC_API_URI}/auth/login`,
-    body
-  )
-  console.log(res)
   try {
     const res = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
+      `${process.env.NEXT_PUBLIC_API_URI}/auth/login`,
       body
     )
-    console.log(res)
+    console.log('Login response : ', res)
+    if (res.status === 200) {
+      return {
+        success: true,
+        message: 'Logged in successfully',
+        access_token: res.data.access_token,
+      }
+    } else {
+      throw new Error(res.data.message)
+    }
   } catch (error: any) {
-    console.log('Error while login user', error)
-    return {
-      success: false,
-      message: error.message,
+    console.log('Error while login :', error)
+
+    if (error.response) {
+      return {
+        success: false,
+        message: error.response.data.message,
+      }
+    } else {
+      return {
+        success: false,
+        message: 'Something went wrong',
+      }
     }
   }
 }

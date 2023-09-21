@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { loginUserApi } from '../api_calls'
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -19,9 +20,10 @@ export default function Login() {
     })
   }
 
-  const handleFormSubmit = (e: any) => {
+  const handleFormSubmit = async (e: any) => {
     e.preventDefault()
     console.log('FormData : ', formData)
+    const res = await loginUserApi(formData)
   }
 
   return (
