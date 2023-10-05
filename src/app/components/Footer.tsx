@@ -4,11 +4,11 @@ export default function Footer() {
   return (
     <footer className="bg-white dark:bg-gray-900">
       <hr className="my-3 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-2" />
-      <div className="sm:flex sm:items-center sm:justify-between p-4 pb-6 lg:pb-8">
+      <div className="sm:flex sm:items-center sm:justify-between p-2">
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
           © 2023{' '}
           <a href="https://flowbite.com/" className="hover:underline">
-            SocialApp™
+            SocialGram™
           </a>
           . All Rights Reserved.
         </span>
